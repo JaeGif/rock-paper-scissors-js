@@ -13,12 +13,12 @@ function playRound(computerSelection, playerSelection) {
     const playerSelectionAdjusted = playerSelection.toLower()
     if (playerSelectionAdjusted === computerSelection) {
         return "Tie! ${playerSelectionAdjusted} and ${computerSelection} are the same."
-    } else if (playerSelectionAdjusted === "rock" && ) {
-
-    } else if (playerSelectionAdjusted === "paper" &&) {
-
-    } else if (playerSelectionAdjusted === "scissors" &&) {
-    
+    } else if ((playerSelectionAdjusted === "rock") && (computerSelection === "scissors")) {
+        return "You win! ${playerSelectionAdjusted} beats ${computerSelection}"
+    } else if (playerSelectionAdjusted === "paper" && (computerSelection === "rock")) {
+        return "You win! ${playerSelectionAdjusted} beats ${computerSelection}"
+    } else if (playerSelectionAdjusted === "scissors" && (computerSelection === "paper")) {
+        return "You win! ${playerSelectionAdjusted} beats ${computerSelection}"
     } else {
         return "You lose! ${computerSelection} beats ${playerSelectionAdjusted}"
     }
