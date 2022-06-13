@@ -12,17 +12,31 @@ function computerChoice() {
 function playRound(computerSelection, playerSelection) {
     const playerSelectionAdjusted = playerSelection.toLowerCase()
     if (playerSelectionAdjusted === computerSelection) {
-        return `Tie, ${playerSelectionAdjusted} and ${computerSelection} are the same.`
-    } else if ((playerSelectionAdjusted === "rock") && (computerSelection === "scissors")) {
-        return `You win, ${playerSelectionAdjusted} beats ${computerSelection}`
+        return [0, `Tie, ${playerSelectionAdjusted} and ${computerSelection} are the same.`] // return 0
+    } else if ((playerSelectionAdjusted === "rock") && (computerSelection === "scissors")) { // return 1
+        return [1, `You win, ${playerSelectionAdjusted} beats ${computerSelection}`]
     } else if (playerSelectionAdjusted === "paper" && (computerSelection === "rock")) {
-        return `You win, ${playerSelectionAdjusted} beats ${computerSelection}`
+        return [1, `You win, ${playerSelectionAdjusted} beats ${computerSelection}`]
     } else if (playerSelectionAdjusted === "scissors" && (computerSelection === "paper")) {
-        return `You win, ${playerSelectionAdjusted} beats ${computerSelection}`
+        return [1, `You win, ${playerSelectionAdjusted} beats ${computerSelection}`]
     } else {
-        return `You lose, ${computerSelection} beats ${playerSelectionAdjusted}`
+        return [-1, `You lose, ${computerSelection} beats ${playerSelectionAdjusted}`] //return -1
     }
 }
-const playerSelection = prompt("Rock, paper, or scissors?:")
-const computerSelection = computerChoice()
-console.log(playRound(computerSelection, playerSelection))
+function game() {
+    let playerScore = 0
+    let computerScore = 0
+    for (let i = 0; i <= 4; i++) {
+        let round = playRound(prompt("Rock, paper, or scissors?:"), computerChoice())
+        if (round[0] === 0) {
+            console.log(round[1])
+        } else if (round[0] === 1) {
+            console.log(round[1])
+            playerScore++
+        } else if (round[0] === -1) {
+            console.log(round[1])
+            computerScore++
+        }
+    }
+}
+game()
