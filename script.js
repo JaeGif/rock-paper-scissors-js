@@ -9,20 +9,22 @@ function computerChoice() {
     }
 }
 
+
 function playRound(computerSelection, playerSelection) {
     const playerSelectionAdjusted = playerSelection.toLowerCase()
     if (playerSelectionAdjusted === computerSelection) {
-        return [0, `Tie, ${playerSelectionAdjusted} and ${computerSelection} are the same.`] // return 0
-    } else if ((playerSelectionAdjusted === "rock") && (computerSelection === "scissors")) { // return 1
+        return [0, `Tie, ${playerSelectionAdjusted} and ${computerSelection} are the same.`] // return 0 on tie
+    } else if ((playerSelectionAdjusted === "rock") && (computerSelection === "scissors")) { // return 1 on win
         return [1, `You win, ${playerSelectionAdjusted} beats ${computerSelection}`]
     } else if (playerSelectionAdjusted === "paper" && (computerSelection === "rock")) {
         return [1, `You win, ${playerSelectionAdjusted} beats ${computerSelection}`]
     } else if (playerSelectionAdjusted === "scissors" && (computerSelection === "paper")) {
         return [1, `You win, ${playerSelectionAdjusted} beats ${computerSelection}`]
     } else {
-        return [-1, `You lose, ${computerSelection} beats ${playerSelectionAdjusted}`] //return -1
+        return [-1, `You lose, ${computerSelection} beats ${playerSelectionAdjusted}`] //return -1 on loss
     }
 }
+
 
 function game() {
     let playerScore = 0
