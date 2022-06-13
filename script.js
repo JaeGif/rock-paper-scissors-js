@@ -23,20 +23,31 @@ function playRound(computerSelection, playerSelection) {
         return [-1, `You lose, ${computerSelection} beats ${playerSelectionAdjusted}`] //return -1
     }
 }
+
 function game() {
     let playerScore = 0
     let computerScore = 0
-    for (let i = 0; i <= 4; i++) {
+    let winLose = ""
+
+    for (let i = 0; i <= 4; i++) {  // increment the game for 5 rounds total
         let round = playRound(prompt("Rock, paper, or scissors?:"), computerChoice())
-        if (round[0] === 0) {
+        if (round[0] === 0) {  // Tie
             console.log(round[1])
-        } else if (round[0] === 1) {
+        } else if (round[0] === 1) {  // win, increment playerScore
             console.log(round[1])
             playerScore++
-        } else if (round[0] === -1) {
+        } else if (round[0] === -1) {  // lose increment computerScore
             console.log(round[1])
             computerScore++
         }
     }
+    if (playerScore > computerScore) {  // add a quick win or lose statement
+        winLose += 'win'
+    } else {
+        winLose += 'lose'
+    }
+    return console.log(`GG. You ${winLose}. Score: ${playerScore} to ${computerScore}`)
 }
+
+
 game()
