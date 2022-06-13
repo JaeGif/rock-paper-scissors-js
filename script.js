@@ -10,19 +10,19 @@ function computerChoice() {
 }
 
 function playRound(computerSelection, playerSelection) {
-    const playerSelectionAdjusted = playerSelection.toLower()
+    const playerSelectionAdjusted = playerSelection.toLowerCase()
     if (playerSelectionAdjusted === computerSelection) {
-        return "Tie! ${playerSelectionAdjusted} and ${computerSelection} are the same."
+        return `Tie, ${playerSelectionAdjusted} and ${computerSelection} are the same.`
     } else if ((playerSelectionAdjusted === "rock") && (computerSelection === "scissors")) {
-        return "You win! ${playerSelectionAdjusted} beats ${computerSelection}"
+        return `You win, ${playerSelectionAdjusted} beats ${computerSelection}`
     } else if (playerSelectionAdjusted === "paper" && (computerSelection === "rock")) {
-        return "You win! ${playerSelectionAdjusted} beats ${computerSelection}"
+        return `You win, ${playerSelectionAdjusted} beats ${computerSelection}`
     } else if (playerSelectionAdjusted === "scissors" && (computerSelection === "paper")) {
-        return "You win! ${playerSelectionAdjusted} beats ${computerSelection}"
+        return `You win, ${playerSelectionAdjusted} beats ${computerSelection}`
     } else {
-        return "You lose! ${computerSelection} beats ${playerSelectionAdjusted}"
+        return `You lose, ${computerSelection} beats ${playerSelectionAdjusted}`
     }
 }
 const playerSelection = prompt("Rock, paper, or scissors?:")
 const computerSelection = computerChoice()
-playRound(computerSelection, playerSelection)
+console.log(playRound(computerSelection, playerSelection))
