@@ -12,6 +12,7 @@ function computerChoice() {
 
 function playRound(computerSelection, playerSelection) {
     const playerSelectionAdjusted = playerSelection.toLowerCase()
+    console.log(playerSelection)
     if (playerSelectionAdjusted === computerSelection) {
         return [0, `Tie, ${playerSelectionAdjusted} and ${computerSelection} are the same.`] // return 0 on tie
     } else if ((playerSelectionAdjusted === "rock") && (computerSelection === "scissors")) { // return 1 on win
@@ -51,5 +52,13 @@ function game() {
     return console.log(`GG. You ${winLose}. Score: ${playerScore} to ${computerScore}`)
 }
 
+const buttons = document.querySelectorAll('button')
+buttons.forEach((button) => {
+    button.addEventListener('click', function (e) {
+        console.log(e)
+    })
+})
 
-game()
+
+
+// game()
