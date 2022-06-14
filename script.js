@@ -1,3 +1,12 @@
+const buttons = document.querySelectorAll('button')
+
+buttons.forEach((button) => {
+    button.addEventListener('click', function (e) {
+        console.log(playRound(computerChoice(), button.id));
+    })
+})
+
+
 function computerChoice() {
     let randInt = Math.floor(Math.random() * 3)  // This uses Math.random and .floor to return random ints betweem 0 and 2
     if (randInt === 0) {  // For consistency 0: rock, 1: paper, 2: scissors throughout the program
@@ -51,14 +60,5 @@ function game() {
     }
     return console.log(`GG. You ${winLose}. Score: ${playerScore} to ${computerScore}`)
 }
-
-const buttons = document.querySelectorAll('button')
-buttons.forEach((button) => {
-    button.addEventListener('click', function (e) {
-        console.log(e)
-    })
-})
-
-
 
 // game()
