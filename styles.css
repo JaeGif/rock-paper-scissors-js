@@ -1,25 +1,64 @@
 body {
+    margin-top: 20px;
     background-color: rgb(44, 44, 44);
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
 }
 
 .button-container {
+    width: auto;
+    margin-top: 200px;
+    height: 300px;
     display: flex;
     justify-content: space-around;
     align-items: center;
 
 }
 button {
-    color: rgb(44, 44, 44);
-    background-color: rgb(213, 213, 213);
-    font-family: 'Courier New', Courier, monospace;
     height: 100px;
     width: 100px;
+    border-radius: 12px;
+    border: solid black 1px;
+}
+button:hover {
+    border: solid blue 2px;
+}
+#rock {
+    background: url(./images/rock.jpeg);
+    background-size: contain;
+}
+#paper {
+    background: url(./images/paper.jpeg);
+    background-size: contain;
+
+}
+#scissors {
+    background: url(./images/scissors.png);
+    background-size: contain;
 }
 .lower-third {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    width: auto;
+    margin-top: 50px;
+    height: 150px;
 }
-.reload-container {
-    background-color: black;
+#restart {
+    height: 80px;
+    background-color: rgba(231, 97, 97, 0.896);
+
+}
+.score-block {
+
+    display: flex;
+    justify-content: space-between;
+
+}
+.score {
+    width: 100px;
+    height: 100px;
+    margin: 30px;
+    border: solid black 2px;
+    text-align: center;
 }
