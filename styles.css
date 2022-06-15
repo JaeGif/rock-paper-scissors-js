@@ -1,22 +1,25 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: rgb(44, 44, 44);
 }
 
 .button-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    background-color: red;
+
 }
 button {
-    color: aqua;
+    color: rgb(44, 44, 44);
+    background-color: rgb(213, 213, 213);
+    font-family: 'Courier New', Courier, monospace;
     height: 100px;
     width: 100px;
 }
-
+.lower-third {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .reload-container {
     background-color: black;
 }
