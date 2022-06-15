@@ -1,11 +1,13 @@
-const buttons = document.querySelectorAll('button')
+function clicked(id) {          // check if button is clicked
+    playRound(computerChoice(), id)
+} 
 
-buttons.forEach((button) => {
-    button.addEventListener('click', function (e) {
-        console.log(playRound(computerChoice(), button.id));
-    })
-})
-
+function reset() {
+    // reset scores to 0
+    playerScore.textContent = 0
+    computerScore.textContent = 0
+    return
+}
 
 function computerChoice() {
     let randInt = Math.floor(Math.random() * 3)  // This uses Math.random and .floor to return random ints betweem 0 and 2
@@ -19,46 +21,57 @@ function computerChoice() {
 }
 
 
-function playRound(computerSelection, playerSelection) {
-    const playerSelectionAdjusted = playerSelection.toLowerCase()
-    console.log(playerSelection)
-    if (playerSelectionAdjusted === computerSelection) {
-        return [0, `Tie, ${playerSelectionAdjusted} and ${computerSelection} are the same.`] // return 0 on tie
-    } else if ((playerSelectionAdjusted === "rock") && (computerSelection === "scissors")) { // return 1 on win
-        return [1, `You win, ${playerSelectionAdjusted} beats ${computerSelection}`]
-    } else if (playerSelectionAdjusted === "paper" && (computerSelection === "rock")) {
-        return [1, `You win, ${playerSelectionAdjusted} beats ${computerSelection}`]
-    } else if (playerSelectionAdjusted === "scissors" && (computerSelection === "paper")) {
-        return [1, `You win, ${playerSelectionAdjusted} beats ${computerSelection}`]
+function playRound(computerSelection, playerSelection) {        // playround checks for the winner of a round and displays accordingly
+    const dialogue = document.querySelector('#dialogue')
+    const playerScore = document.querySelector('#playerScore')
+    const computerScore = document.querySelector('#computerScore')
+    let playerScoreLine = parseInt(playerScore.textContent)
+    let computerScoreLine = parseInt(computerScore.textContent)
+    if (playerSelection === computerSelection) {
+        dialogue.textContent = `Tie, ${playerSelection} and ${computerSelection} are the same.`
+    } else if ((playerSelection === "rock") && (computerSelection === "scissors")) { // return 1 on win
+        playerScoreLine++
+        dialogue.textContent = `You win, ${playerSelection} beats ${computerSelection}`
+        playerScore.textContent = `${playerScoreLine}`
+
+    } else if (playerSelection === "paper" && (computerSelection === "rock")) {
+        dialogue.textContent = `You win, ${playerSelection} beats ${computerSelection}`
+        playerScoreLine++
+        playerScore.textContent = `${playerScoreLine}`
+
+    } else if (playerSelection === "scissors" && (computerSelection === "paper")) {
+        dialogue.textContent = `You win, ${playerSelection} beats ${computerSelection}`
+        playerScoreLine++
+        playerScore.textContent = `${playerScoreLine}`
+
     } else {
-        return [-1, `You lose, ${computerSelection} beats ${playerSelectionAdjusted}`] //return -1 on loss
-    }
+        dialogue.textContent = `You lose, ${computerSelection} beats ${playerSelection}`
+        computerScoreLine++
+        computerScore.textContent = `${computerScoreLine}`
+    } 
+    checkWinner(playerScoreLine, computerScoreLine)  // after every round check to see if the game is won
 }
 
 
-function game() {
-    let playerScore = 0
-    let computerScore = 0
-    let winLose = ""
-
-    for (let i = 0; i <= 4; i++) {  // increment the game for 5 rounds total
-        let round = playRound(prompt("Rock, paper, or scissors?:"), computerChoice())
-        if (round[0] === 0) {  // Tie
-            console.log(round[1])
-        } else if (round[0] === 1) {  // win, increment playerScore
-            console.log(round[1])
-            playerScore++
-        } else if (round[0] === -1) {  // lose increment computerScore
-            console.log(round[1])
-            computerScore++
-        }
-    }
-    if (playerScore > computerScore) {  // add a quick win or lose statement
-        winLose += 'win'
-    } else {
-        winLose += 'lose'
-    }
-    return console.log(`GG. You ${winLose}. Score: ${playerScore} to ${computerScore}`)
+function checkWinner(playerScore, computerScore) {      // if anyone's score is 5 the game is over
+    console.log(playerScore, computerScore)
+    if (playerScore == 5 || computerScore == 5) {
+        dialogue.textContent = `Game Over! Computer: ${computerScore} to Player: ${playerScore}`
+        reset()
+    } 
 }
 
-// game()
+
+function game() {       // initializes everything for encapsulation
+    const buttons = document.querySelectorAll('.button')
+    const restart = document.querySelector('#restart')
+    restart.addEventListener('click', reset)        // reset scoreline if you ragequit
+
+    buttons.forEach((button) => {
+        button.addEventListener('click', function (e) {
+            clicked(e.target.id)
+    })
+})
+}
+
+game()

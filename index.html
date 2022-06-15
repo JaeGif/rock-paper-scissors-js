@@ -5,11 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css">
     <script src = "script.js" defer></script>
 </head>
     <body>
-        <button id = 'rock' type="button">Rock</button>
-        <button id = 'paper' type="button">Paper</button>
-        <button id = 'scissors' type="button">Scissors</button>
+        <div>
+            block
+        </div>
+        <div class = "button-container">
+            <button class = "button" id = 'rock' type="button">Rock</button>
+            <button class = "button" id = 'paper' type="button">Paper</button>
+            <button class = "button" id = 'scissors' type="button">Scissors</button>
+        </div> 
+        <div class = "score-block">
+            <div>Player
+                <h1 id="playerScore">0</h1>
+            </div>
+            <div>Computer
+                <h1 id="computerScore">0</h1>
+            </div>
+        </div>
+        <div id = "dialogue">
+            Pick your weapon to start!
+        </div>
+        <div class = "reload-container">
+            <button id="restart">Restart</button>
+        </div>
     </body>
 </html>
